@@ -29,77 +29,77 @@ const Portfolio = () => {
       title: "Modern Bathroom Remodel",
       location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "https://i.ibb.co/7xZKR9zd/IMG-20230329-WA0005.jpg",
+      image: "https://i.ibb.co/4gDk22LG/IMG-20230329-WA0020.jpg",
       description: "Elegant master bathroom renovation with premium fixtures, custom tile work, and a spacious walk-in shower. The design creates a spa-like atmosphere for ultimate relaxation."
     },
     {
       title: "Premium Hardwood Flooring",
       location: "Louisville, KY",
       category: "Flooring",
-      image: "https://i.ibb.co/q3XH1pDJ/IMG-20230329-WA0052.jpg",
+      image: "https://i.ibb.co/S4d2b6p4/IMG-20230329-WA0021.jpg",
       description: "Luxurious hardwood flooring installation featuring premium oak with custom staining and finishing. The result is a timeless, elegant foundation for any space."
     },
     {
       title: "Luxury Bathroom Suite",
       location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "https://i.ibb.co/B5XqLmjd/IMG-20230329-WA0078.jpg",
+      image: "https://i.ibb.co/bM53fcYb/IMG-20230329-WA0022.jpg",
       description: "Luxurious bathroom suite with designer fixtures, custom vanity, and elegant tile patterns. This renovation brings modern luxury to everyday living."
     },
     {
       title: "Contemporary Kitchen Design",
       location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "https://i.ibb.co/NgC5YP8b/IMG-20230329-WA0082.jpg",
+      image: "https://i.ibb.co/HL3fjWQT/IMG-20230329-WA0023.jpg",
       description: "Modern kitchen design with sleek finishes, custom storage solutions, and premium appliances. The design maximizes space while maintaining elegance."
     },
     {
       title: "Elegant Tile Installation",
       location: "Louisville, KY",
       category: "Flooring",
-      image: "https://i.ibb.co/VZrGYZP/IMG-20240405-WA0027.jpg",
+      image: "https://i.ibb.co/S7MWq12T/IMG-20230329-WA0089.jpg",
       description: "Premium luxury tile installation with intricate patterns and professional grouting. Perfect for high-traffic areas while maintaining elegance."
     },
     {
       title: "Custom Cabinetry Design",
       location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "https://i.ibb.co/VWwtqK4g/IMG-20230329-WA0083.jpg",
+      image: "https://i.ibb.co/7tXLCRbF/IMG-20230329-WA0092.jpg",
       description: "Gourmet kitchen featuring custom cabinetry, premium countertops, and professional-grade appliances. Perfect for both cooking and entertaining."
     },
     {
       title: "Modern Shower Installation",
       location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "https://i.ibb.co/SDNdFFR1/IMG-20230329-WA0085.jpg",
+      image: "https://i.ibb.co/SXVY1qY9/IMG-20240405-WA0016.jpg",
       description: "Luxurious shower installation with custom tile work, designer fixtures, and a spacious layout. The renovation creates a perfect balance of style and comfort."
     },
     {
       title: "Open Concept Kitchen",
       location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "https://i.ibb.co/S7MWq12T/IMG-20230329-WA0089.jpg",
+      image: "https://i.ibb.co/VcPHNHBV/20240601-195820.jpg",
       description: "Contemporary kitchen renovation featuring open concept design, custom storage solutions, and a perfect blend of style and functionality."
     },
     {
       title: "Designer Bathroom Vanity",
       location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "https://i.ibb.co/7tXLCRbF/IMG-20230329-WA0092.jpg",
+      image: "https://i.ibb.co/7xZKR9zd/IMG-20230329-WA0005.jpg",
       description: "Sophisticated bathroom design with custom vanity, modern fixtures, and a luxurious layout. The renovation creates a perfect balance of elegance and practicality."
     },
     {
       title: "Premium Countertop Installation",
       location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "https://i.ibb.co/qYcgjzZR/IMG-20230329-WA0094.jpg",
+      image: "https://i.ibb.co/q3XH1pDJ/IMG-20230329-WA0052.jpg",
       description: "High-end kitchen update featuring premium countertops, custom backsplash, and state-of-the-art appliances. The design maximizes both style and functionality."
     },
     {
       title: "Luxury Master Bathroom",
       location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "https://i.ibb.co/1Yg0tkfH/IMG-20240405-WA0019.jpg",
+      image: "https://i.ibb.co/B5XqLmjd/IMG-20230329-WA0078.jpg",
       description: "Luxury bathroom renovation with custom tile work, designer fixtures, and a spacious layout. The design creates a perfect sanctuary for relaxation."
     }
   ];
@@ -173,6 +173,7 @@ const Portfolio = () => {
                       sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                       className="object-cover transition-transform duration-700 group-hover:scale-105"
                       quality={90}
+                      unoptimized={true}
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                   </div>
@@ -268,6 +269,7 @@ const Portfolio = () => {
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
                   className="object-cover"
                   quality={95}
+                  unoptimized={true}
                 />
               </div>
               <div className="p-8">
