@@ -19,102 +19,88 @@ const Portfolio = () => {
 
   const projects: Project[] = [
     {
-      title: "Modern Kitchen Transformation",
-      location: "Orlando, FL",
+      title: "Elegant Kitchen Transformation",
+      location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "/images/2024-04-22.jpg",
+      image: "https://i.ibb.co/V09Qdzyx/IMG-20161215-142946.jpg",
       description: "Complete kitchen renovation featuring custom cabinetry, quartz countertops, and modern appliances. This stunning transformation creates a perfect blend of functionality and luxury."
     },
     {
-      title: "Luxury Bathroom Remodel",
-      location: "Orlando, FL",
+      title: "Modern Bathroom Remodel",
+      location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "/images/2024-04-22 (1).jpg",
+      image: "https://i.ibb.co/7xZKR9zd/IMG-20230329-WA0005.jpg",
       description: "Elegant master bathroom renovation with premium fixtures, custom tile work, and a spacious walk-in shower. The design creates a spa-like atmosphere for ultimate relaxation."
     },
     {
       title: "Premium Hardwood Flooring",
-      location: "Orlando, FL",
+      location: "Louisville, KY",
       category: "Flooring",
-      image: "/images/2024-04-22 (2).jpg",
+      image: "https://i.ibb.co/q3XH1pDJ/IMG-20230329-WA0052.jpg",
       description: "Luxurious hardwood flooring installation featuring premium oak with custom staining and finishing. The result is a timeless, elegant foundation for any space."
     },
     {
-      title: "Premium Bathroom Suite",
-      location: "Orlando, FL",
+      title: "Luxury Bathroom Suite",
+      location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "/images/2024-04-22 (3).jpg",
+      image: "https://i.ibb.co/B5XqLmjd/IMG-20230329-WA0078.jpg",
       description: "Luxurious bathroom suite with designer fixtures, custom vanity, and elegant tile patterns. This renovation brings modern luxury to everyday living."
     },
     {
-      title: "Contemporary Kitchen Update",
-      location: "Orlando, FL",
+      title: "Contemporary Kitchen Design",
+      location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "/images/2024-04-22 (4).jpg",
-      description: "Modern kitchen update with sleek finishes, custom storage solutions, and premium appliances. The design maximizes space while maintaining elegance."
+      image: "https://i.ibb.co/NgC5YP8b/IMG-20230329-WA0082.jpg",
+      description: "Modern kitchen design with sleek finishes, custom storage solutions, and premium appliances. The design maximizes space while maintaining elegance."
     },
     {
-      title: "Luxury Vinyl Plank Installation",
-      location: "Orlando, FL",
+      title: "Elegant Tile Installation",
+      location: "Louisville, KY",
       category: "Flooring",
-      image: "/images/2024-04-22 (5).jpg",
-      description: "Premium luxury vinyl plank installation with waterproof technology and realistic wood grain patterns. Perfect for high-traffic areas while maintaining elegance."
+      image: "https://i.ibb.co/VZrGYZP/IMG-20240405-WA0027.jpg",
+      description: "Premium luxury tile installation with intricate patterns and professional grouting. Perfect for high-traffic areas while maintaining elegance."
     },
     {
-      title: "Gourmet Kitchen Design",
-      location: "Orlando, FL",
+      title: "Custom Cabinetry Design",
+      location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "/images/2024-04-22 (6).jpg",
-      description: "Gourmet kitchen design with custom cabinetry, premium countertops, and professional-grade appliances. Perfect for both cooking and entertaining."
+      image: "https://i.ibb.co/VWwtqK4g/IMG-20230329-WA0083.jpg",
+      description: "Gourmet kitchen featuring custom cabinetry, premium countertops, and professional-grade appliances. Perfect for both cooking and entertaining."
     },
     {
-      title: "Master Bathroom Suite",
-      location: "Orlando, FL",
+      title: "Modern Shower Installation",
+      location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "/images/2024-04-22 (7).jpg",
-      description: "Luxurious master bathroom suite with custom tile work, designer fixtures, and a spacious layout. The renovation creates a perfect balance of style and comfort."
+      image: "https://i.ibb.co/SDNdFFR1/IMG-20230329-WA0085.jpg",
+      description: "Luxurious shower installation with custom tile work, designer fixtures, and a spacious layout. The renovation creates a perfect balance of style and comfort."
     },
     {
-      title: "Modern Kitchen Renovation",
-      location: "Orlando, FL",
+      title: "Open Concept Kitchen",
+      location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "/images/2024-08-23.jpg",
-      description: "Contemporary kitchen renovation featuring custom storage solutions, premium finishes, and a perfect blend of style and functionality."
+      image: "https://i.ibb.co/S7MWq12T/IMG-20230329-WA0089.jpg",
+      description: "Contemporary kitchen renovation featuring open concept design, custom storage solutions, and a perfect blend of style and functionality."
     },
     {
-      title: "Elegant Bathroom Design",
-      location: "Orlando, FL",
+      title: "Designer Bathroom Vanity",
+      location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "/images/2024-09-07.jpg",
-      description: "Sophisticated bathroom design with custom tile work, modern fixtures, and a luxurious layout. The renovation creates a perfect balance of elegance and practicality."
+      image: "https://i.ibb.co/7tXLCRbF/IMG-20230329-WA0092.jpg",
+      description: "Sophisticated bathroom design with custom vanity, modern fixtures, and a luxurious layout. The renovation creates a perfect balance of elegance and practicality."
     },
     {
-      title: "Premium Kitchen Update",
-      location: "Orlando, FL",
+      title: "Premium Countertop Installation",
+      location: "Louisville, KY",
       category: "Kitchen Remodeling",
-      image: "/images/2024-09-07 (1).jpg",
-      description: "High-end kitchen update featuring custom cabinetry, premium countertops, and state-of-the-art appliances. The design maximizes both style and functionality."
+      image: "https://i.ibb.co/qYcgjzZR/IMG-20230329-WA0094.jpg",
+      description: "High-end kitchen update featuring premium countertops, custom backsplash, and state-of-the-art appliances. The design maximizes both style and functionality."
     },
     {
-      title: "Luxury Bathroom Renovation",
-      location: "Orlando, FL",
+      title: "Luxury Master Bathroom",
+      location: "Louisville, KY",
       category: "Bathroom Remodeling",
-      image: "/images/2024-09-07 (2).jpg",
+      image: "https://i.ibb.co/1Yg0tkfH/IMG-20240405-WA0019.jpg",
       description: "Luxury bathroom renovation with custom tile work, designer fixtures, and a spacious layout. The design creates a perfect sanctuary for relaxation."
-    },
-    {
-      title: "Modern Kitchen Transformation",
-      location: "Orlando, FL",
-      category: "Kitchen Remodeling",
-      image: "/images/2024-12-06.jpg",
-      description: "Complete kitchen transformation featuring custom cabinetry, premium finishes, and modern appliances. The design creates a perfect blend of style and functionality."
-    },
-    {
-      title: "Premium Tile Flooring",
-      location: "Orlando, FL",
-      category: "Flooring",
-      image: "/images/2024-12-06.jpg",
-      description: "Luxury tile flooring installation featuring premium porcelain tiles with custom patterns and professional grouting. Perfect for both aesthetics and durability."
     }
   ];
 
@@ -155,7 +141,7 @@ const Portfolio = () => {
             Our Portfolio
           </h2>
           <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Explore our recent remodeling projects across Orlando
+            Explore our recent remodeling projects across Louisville
           </p>
         </motion.div>
 
