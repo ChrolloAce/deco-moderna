@@ -16,24 +16,45 @@ const ReviewsWidget = () => {
   const [reviews] = useState<Review[]>([
     {
       id: 1,
-      name: 'Robert S.',
+      name: 'Thomas R.',
       rating: 5,
-      date: 'March 15, 2023',
-      text: 'Luxury Home Remodeling transformed our kitchen beyond our expectations. The attention to detail and quality of workmanship was outstanding. Highly recommend their services!'
+      date: 'February 18, 2024',
+      text: 'Deco Moderna transformed our outdated kitchen into a stunning modern space. Their design team was creative and attentive to our needs, while the craftsmen executed with precision. Our Kentucky home has never looked better!'
     },
     {
       id: 2,
-      name: 'Jennifer K.',
+      name: 'Sarah L.',
       rating: 5,
-      date: 'April 22, 2023',
-      text: 'We hired Luxury Home Remodeling for our bathroom renovation and couldn\'t be happier. Professional, punctual, and the results are stunning. Will definitely use them again for future projects.'
+      date: 'January 9, 2024',
+      text: 'We hired Deco Moderna for our bathroom renovation in Louisville and couldn\'t be happier. The team was professional from start to finish, and they completed the project ahead of schedule. The tile work is especially impressive!'
     },
     {
       id: 3,
-      name: 'Michael T.',
+      name: 'James B.',
       rating: 5,
-      date: 'May 10, 2023',
-      text: 'Outstanding work on our home remodel. The team was knowledgeable and professional throughout the entire process. They stayed on schedule and the quality exceeded our expectations.'
+      date: 'December 15, 2023',
+      text: 'Outstanding work on our whole home remodel. Deco Moderna handled everything with professionalism and exceptional attention to detail. They transformed our Kentucky home while maintaining its original character. Highly recommend!'
+    },
+    {
+      id: 4,
+      name: 'Emily K.',
+      rating: 4,
+      date: 'November 22, 2023',
+      text: 'Deco Moderna installed beautiful custom cabinetry throughout our Louisville home. The quality is exceptional, and their team was respectful of our space. The project took slightly longer than expected, but the results were worth the wait.'
+    },
+    {
+      id: 5,
+      name: 'David W.',
+      rating: 5,
+      date: 'October 8, 2023',
+      text: 'We had Deco Moderna install hardwood flooring throughout our Kentucky home, and we couldn\'t be more impressed. The team was efficient, and the finished product is flawless. They even helped us select the perfect wood species for our style.'
+    },
+    {
+      id: 6,
+      name: 'Michelle P.',
+      rating: 5,
+      date: 'September 14, 2023',
+      text: 'The team at Deco Moderna repainted our entire Louisville home inside and out. Their attention to detail and clean work ethic made the process stress-free. Our neighbors keep asking who did the work - we happily recommend them!'
     }
   ]);
 
@@ -46,7 +67,7 @@ const ReviewsWidget = () => {
             What Our Clients Say
           </h2>
           <p className="text-base sm:text-lg text-gray-600 max-w-2xl mx-auto px-4 sm:px-0">
-            Read what our valued customers have to say about their experience with Luxury Home Remodeling in Orlando
+            Read what our valued customers have to say about their experience with Deco Moderna in Louisville, Kentucky
           </p>
         </div>
 
@@ -76,7 +97,7 @@ const ReviewsWidget = () => {
 
         <div className="text-center mt-8 md:mt-12">
           <a 
-            href="https://www.google.com/maps/place/Luxury+Home+Remodeling+Orlando" 
+            href="https://www.google.com/maps/place/Deco+Moderna+Louisville" 
             target="_blank" 
             rel="noopener noreferrer"
             className="inline-flex items-center text-gold-500 hover:text-gold-600 transition-colors font-medium text-sm sm:text-base"

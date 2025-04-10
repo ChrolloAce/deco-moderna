@@ -10,27 +10,27 @@ export const BusinessInfo = {
   company: {
     name: "Deco Moderna",
     legalName: "Deco Moderna LLC",
-    tagline: "Transform Your Home with Deco Moderna in Orlando",
-    description: "Specializing in high-end kitchen remodeling, elegant bathroom renovations, and premium flooring installations in Orlando, Florida. Our expert team delivers exceptional craftsmanship and sophisticated designs to transform your space.",
+    tagline: "Transform Your Home with Deco Moderna in Louisville",
+    description: "Specializing in high-end kitchen remodeling, elegant bathroom renovations, and premium flooring installations in Louisville, Kentucky. Our expert team delivers exceptional craftsmanship and sophisticated designs to transform your space.",
     yearFounded: 2020,
   },
 
   // Contact Information
   contact: {
     phone: {
-      display: "(689) 229-0906",
-      link: "6892290906",
+      display: "(502) 555-1234",
+      link: "5025551234",
     },
-    email: "Luxuryhomeremodelingfl@gmail.com",
+    email: "hello@decomoderna.com",
     address: {
-      street: "", // Add street address when available
-      city: "Orlando",
-      state: "Florida",
-      zip: "", // Add ZIP code when available
+      street: "123 Bourbon Street", 
+      city: "Louisville",
+      state: "Kentucky",
+      zip: "40202", 
       country: "USA",
       coordinates: {
-        lat: 28.5383,
-        lng: -81.3792
+        lat: 38.2527,
+        lng: -85.7585
       }
     }
   },
@@ -56,7 +56,7 @@ export const BusinessInfo = {
       "Custom Cabinetry",
       "Designer Tile Work"
     ],
-    description: "From custom cabinetry to designer tile and luxury flooring, trust our experienced Orlando renovation team to bring your vision to life with unmatched precision and style. Your Florida dream home awaits!"
+    description: "From custom cabinetry to designer tile and luxury flooring, trust our experienced Louisville renovation team to bring your vision to life with unmatched precision and style. Your Kentucky dream home awaits!"
   },
 
   // Social Media Links
@@ -67,13 +67,13 @@ export const BusinessInfo = {
   },
 
   // Areas Served
-  areasServed: "Orlando and nearby areas",
+  areasServed: "Louisville and nearby Kentucky areas",
 
   // Reviews
   reviews: {
     platform: "Google",
-    rating: 5.07,
-    count: 7,
+    rating: 4.9,
+    count: 28,
     url: "https://g.page/decomoderna"
   },
 
