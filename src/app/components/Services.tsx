@@ -12,37 +12,37 @@ export default function Services() {
     {
       title: "Kitchen Remodeling",
       description: "Custom kitchen designs with premium materials and modern appliances",
-      image: "https://i.ibb.co/Y48vSqk/kitchens.png",
+      image: "https://i.ibb.co/Y48vSqkV/image.png",
       id: "kitchen-remodeling"
     },
     {
       title: "Bathroom Renovation",
       description: "Luxurious bathroom transformations with custom tile work and fixtures",
-      image: "https://i.ibb.co/Nn7b3nM/Bathrooms.png",
+      image: "https://i.ibb.co/Nn7b3nMB/image.png",
       id: "bathroom-remodeling"
     },
     {
       title: "Whole Home Remodeling",
       description: "Complete home transformations with cohesive design and premium finishes",
-      image: "https://i.ibb.co/wN2kWxM/Homes.png",
+      image: "https://i.ibb.co/wN2kWxM0/image.png",
       id: "whole-home-remodeling"
     },
     {
       title: "Custom Cabinetry",
       description: "Handcrafted cabinetry solutions for kitchens, bathrooms, and living spaces",
-      image: "https://i.ibb.co/sp2cVty/Cabinets.png",
+      image: "https://i.ibb.co/sp2cVty5/image.png",
       id: "custom-cabinetry"
     },
     {
       title: "Flooring",
       description: "Premium flooring solutions including hardwood, tile, and luxury vinyl",
-      image: "https://i.ibb.co/mFqhWdb/Flooring.png",
+      image: "https://i.ibb.co/mFqhWdbv/image.png",
       id: "flooring"
     },
     {
       title: "Painting",
       description: "Professional interior and exterior painting services with premium finishes",
-      image: "https://i.ibb.co/W7YCy2N/Paint.png",
+      image: "https://i.ibb.co/W7YCy2N/image.png",
       id: "painting"
     }
   ];
