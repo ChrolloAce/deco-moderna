@@ -1,0 +1,57 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --color-primary: 173 123 42; /* Gold */
+    --color-secondary: 40 40 40; /* Dark gray */
+    --color-light: 249 249 249; /* Light gray/off-white */
+    --color-dark: 30 30 30; /* Almost black */
+    --color-gold-50: 252 247 232;
+    --color-gold-100: 249 240 209;
+    --color-gold-200: 242 225 164;
+    --color-gold-300: 235 210 118;
+    --color-gold-400: 228 195 73;
+    --color-gold-500: 173 123 42; /* Base gold */
+    --color-gold-600: 138 98 34;
+    --color-gold-700: 104 74 25;
+    --color-gold-800: 69 49 17;
+    --color-gold-900: 35 25 8;
+  }
+}
+
+@layer components {
+  .container-custom {
+    @apply w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn-gold {
+    @apply inline-block px-6 py-3 bg-gradient-to-r from-[#c6a457] to-[#ad7b2a] text-white font-medium rounded-md shadow-md hover:from-[#ad7b2a] hover:to-[#8c6422] transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#ad7b2a];
+  }
+  
+  .bg-gold-gradient {
+    @apply bg-gradient-to-r from-[#c6a457] to-[#ad7b2a];
+  }
+  
+  .shadow-elegant {
+    @apply shadow-[0_10px_30px_-15px_rgba(0,0,0,0.15)];
+  }
+}
+
+/* Additional global styles */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply text-gray-800 font-sans antialiased;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  @apply font-serif;
+}
+
+.font-display {
+  @apply font-playfair;
+} 
