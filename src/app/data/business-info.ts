@@ -10,7 +10,7 @@ export const BusinessInfo = {
   company: {
     name: "Deco Moderna",
     legalName: "Deco Moderna LLC",
-    tagline: "Transform Your Home with Deco Moderna in Louisville",
+    tagline: "Transform Your Home with Deco Moderna in Louisville, KY",
     description: "Specializing in high-end kitchen remodeling, elegant bathroom renovations, and premium flooring installations in Louisville, Kentucky. Our expert team delivers exceptional craftsmanship and sophisticated designs to transform your space.",
     yearFounded: 2020,
   },
