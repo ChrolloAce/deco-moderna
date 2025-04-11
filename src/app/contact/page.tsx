@@ -133,7 +133,7 @@ const ContactPage = () => {
         <title>{SiteMetadata.contact.title}</title>
         <meta name="description" content={SiteMetadata.contact.description} />
         <meta name="keywords" content={SiteMetadata.contact.keywords} />
-        <link rel="canonical" href="https://decomoderna.com/contact" />
+        <link rel="canonical" href="https://www.decomodernaremodeling.com/contact" />
       </Head>
       <Navbar />
       <main>

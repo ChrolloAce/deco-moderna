@@ -6,7 +6,7 @@
 
   <!-- Home Page -->
   <url>
-    <loc>https://decomoderna.com/</loc>
+    <loc>https://www.decomodernaremodeling.com/</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>1.00</priority>
     <changefreq>weekly</changefreq>
@@ -14,7 +14,7 @@
 
   <!-- Services Pages -->
   <url>
-    <loc>https://decomoderna.com/services</loc>
+    <loc>https://www.decomodernaremodeling.com/services</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.90</priority>
     <changefreq>monthly</changefreq>
@@ -22,7 +22,7 @@
 
   <!-- Portfolio Page -->
   <url>
-    <loc>https://decomoderna.com/portfolio</loc>
+    <loc>https://www.decomodernaremodeling.com/portfolio</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.80</priority>
     <changefreq>weekly</changefreq>
@@ -30,7 +30,7 @@
 
   <!-- About Page -->
   <url>
-    <loc>https://decomoderna.com/about</loc>
+    <loc>https://www.decomodernaremodeling.com/about</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.70</priority>
     <changefreq>monthly</changefreq>
@@ -38,7 +38,7 @@
 
   <!-- Contact Page -->
   <url>
-    <loc>https://decomoderna.com/contact</loc>
+    <loc>https://www.decomodernaremodeling.com/contact</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.90</priority>
     <changefreq>monthly</changefreq>
@@ -46,7 +46,7 @@
 
   <!-- FAQ Page -->
   <url>
-    <loc>https://decomoderna.com/faq</loc>
+    <loc>https://www.decomodernaremodeling.com/faq</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.60</priority>
     <changefreq>monthly</changefreq>
@@ -54,7 +54,7 @@
 
   <!-- Careers Page -->
   <url>
-    <loc>https://decomoderna.com/careers</loc>
+    <loc>https://www.decomodernaremodeling.com/careers</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.60</priority>
     <changefreq>monthly</changefreq>
@@ -62,13 +62,13 @@
 
   <!-- Legal Pages -->
   <url>
-    <loc>https://decomoderna.com/privacy</loc>
+    <loc>https://www.decomodernaremodeling.com/privacy</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.30</priority>
     <changefreq>yearly</changefreq>
   </url>
   <url>
-    <loc>https://decomoderna.com/terms</loc>
+    <loc>https://www.decomodernaremodeling.com/terms</loc>
     <lastmod>2023-10-01T12:00:00+00:00</lastmod>
     <priority>0.30</priority>
     <changefreq>yearly</changefreq>

@@ -136,8 +136,8 @@ export const SiteMetadata = {
       "@context": "https://schema.org",
       "@type": "HomeAndConstructionBusiness",
       "name": COMPANY_NAME,
-      "image": "https://decomoderna.com/logo.png",
-      "url": "https://decomoderna.com",
+      "image": "https://www.decomodernaremodeling.com/logo.png",
+      "url": "https://www.decomodernaremodeling.com",
       "telephone": "(909) 645-3373",
       "email": "Savemoneyremodeling@gmail.com",
       "address": {

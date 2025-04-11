@@ -26,7 +26,7 @@ const playfair = Playfair_Display({
 });
 
 export const metadata = {
-  metadataBase: new URL('https://decomoderna.com'), // Update with actual domain when available
+  metadataBase: new URL('https://www.decomodernaremodeling.com'),
   title: SiteMetadata.home.title,
   description: SiteMetadata.home.description,
   keywords: SiteMetadata.home.keywords,
@@ -43,7 +43,7 @@ export const metadata = {
   openGraph: {
     title: SiteMetadata.home.title,
     description: SiteMetadata.home.description,
-    url: 'https://decomoderna.com', // Update with actual domain when available
+    url: 'https://www.decomodernaremodeling.com',
     siteName: COMPANY_NAME,
     locale: 'en_US',
     type: 'website',
@@ -74,7 +74,7 @@ export const metadata = {
     },
   },
   alternates: {
-    canonical: 'https://decomoderna.com',
+    canonical: 'https://www.decomodernaremodeling.com',
   },
   verification: {
     google: 'verification_token', // Replace with your verification token when available
