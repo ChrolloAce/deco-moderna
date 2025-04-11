@@ -8,6 +8,7 @@ import Navbar from '../components/Navbar';
 import Footer from '../components/Footer';
 import { useRouter } from 'next/navigation';
 import Head from 'next/head';
+import { SiteMetadata } from '../data/site-metadata';
 
 const ContactPage = () => {
   const router = useRouter();
@@ -19,6 +20,8 @@ const ContactPage = () => {
     message: '',
     service: 'Kitchen Remodeling',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   useEffect(() => {
     const handleMessage = (event: MessageEvent) => {
@@ -45,26 +48,51 @@ const ContactPage = () => {
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    console.log('Form submitted:', formData);
+    setIsSubmitting(true);
+    setSubmitError('');
     
-    // Send data to webhook
-    fetch('https://hook.us2.make.com/neln229u0by16e8y53nprbdbacgeabol', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(formData),
-    })
-      .then(response => {
-        console.log('Webhook response:', response);
-        router.push('/thank-you');
-      })
-      .catch(error => {
-        console.error('Error submitting form:', error);
-        alert('There was an error submitting your form. Please try again.');
+    try {
+      // Send data to webhook
+      const response = await fetch('https://hook.us2.make.com/neln229u0by16e8y53nprbdbacgeabol', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: 'website-contact-form',
+          timestamp: new Date().toISOString(),
+          formLocation: 'contact-page'
+        }),
       });
+      
+      if (!response.ok) {
+        throw new Error('Failed to submit form');
+      }
+      
+      // Also store in localStorage for backup
+      if (typeof window !== 'undefined') {
+        const previousSubmissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+        localStorage.setItem('formSubmissions', JSON.stringify([
+          ...previousSubmissions,
+          {
+            ...formData,
+            timestamp: new Date().toISOString(),
+            formLocation: 'contact-page'
+          }
+        ]));
+      }
+      
+      // Redirect to thank you page
+      router.push('/thank-you');
+    } catch (error) {
+      console.error('Error submitting form:', error);
+      setSubmitError('There was an error submitting your form. Please try again or contact us directly by phone.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   // Contact information
@@ -102,9 +130,10 @@ const ContactPage = () => {
   return (
     <>
       <Head>
-        <title>Contact Deco Moderna | Louisville's Premium Remodeling Services</title>
-        <meta name="description" content="Contact Deco Moderna for premium kitchen, bathroom, and home renovation services in Louisville, KY. Get a free consultation for your remodeling project today." />
-        <meta name="keywords" content="Louisville home remodeling, luxury remodeling Louisville, kitchen remodeling Louisville, bathroom renovation Kentucky, custom cabinetry, premium flooring installation, Kentucky contractor, home renovation Louisville" />
+        <title>{SiteMetadata.contact.title}</title>
+        <meta name="description" content={SiteMetadata.contact.description} />
+        <meta name="keywords" content={SiteMetadata.contact.keywords} />
+        <link rel="canonical" href="https://decomoderna.com/contact" />
       </Head>
       <Navbar />
       <main>
@@ -133,7 +162,7 @@ const ContactPage = () => {
                 transition={{ duration: 0.5, delay: 0.1 }}
                 className="text-xl text-gray-200 max-w-3xl mx-auto"
               >
-                We're here to answer your questions and provide you with exceptional remodeling services.
+                We're here to answer your questions and provide you with exceptional remodeling services in Louisville, Kentucky.
               </motion.p>
             </div>
           </div>
@@ -149,10 +178,10 @@ const ContactPage = () => {
             >
               <div className="h-1 w-20 bg-gold-gradient mx-auto mb-6 rounded-full"></div>
               <h1 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                Contact Us
+                Contact Us Today
               </h1>
               <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Get in touch with us for a free consultation and personalized remodeling quote
+                Get in touch with our Louisville remodeling experts for a free consultation and personalized quote
               </p>
             </motion.div>
 
@@ -253,6 +282,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                       required
+                      aria-required="true"
                     />
                   </div>
 
@@ -268,6 +298,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                       required
+                      aria-required="true"
                     />
                   </div>
 
@@ -283,6 +314,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                       required
+                      aria-required="true"
                     />
                   </div>
 
@@ -297,6 +329,7 @@ const ContactPage = () => {
                       onChange={handleChange}
                       className="w-full px-4 py-3 border border-gray-300 rounded-full focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                       required
+                      aria-required="true"
                     >
                       <option value="">Select a Service</option>
                       <option value="Kitchen Remodeling">Kitchen Remodeling</option>
@@ -305,8 +338,7 @@ const ContactPage = () => {
                       <option value="Painting Services">Painting Services</option>
                       <option value="Custom Cabinetry">Custom Cabinetry</option>
                       <option value="Whole Home Remodeling">Whole Home Remodeling</option>
-                      <option value="Commercial Remodeling">Commercial Remodeling</option>
-                      <option value="Industrial Remodeling">Industrial Remodeling</option>
+                      <option value="Free Consultation">Free Consultation</option>
                       <option value="Job Application">Job Application</option>
                     </select>
                   </div>
@@ -323,17 +355,29 @@ const ContactPage = () => {
                       rows={4}
                       className="w-full px-4 py-3 border border-gray-300 rounded-2xl focus:outline-none focus:ring-2 focus:ring-gold-400 focus:border-transparent"
                       required
+                      aria-required="true"
                     ></textarea>
                   </div>
+
+                  {submitError && (
+                    <div className="p-3 bg-red-50 text-red-700 rounded-xl text-sm">
+                      {submitError}
+                    </div>
+                  )}
 
                   <motion.button
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     type="submit"
                     className="w-full py-3 bg-gold-gradient text-dark font-medium rounded-full hover:bg-gold-400 transition-colors duration-300 shadow-gold"
+                    disabled={isSubmitting}
                   >
-                    Send Message
+                    {isSubmitting ? 'Sending...' : 'Send Message'}
                   </motion.button>
+
+                  <p className="text-xs text-gray-500 text-center">
+                    Your information is secure and will never be shared with third parties.
+                  </p>
                 </form>
               </motion.div>
             </div>
@@ -342,6 +386,7 @@ const ContactPage = () => {
 
         <section className="py-20">
           <div className="container-custom">
+            <h2 className="text-3xl font-bold text-center mb-8">Visit Us in Louisville, Kentucky</h2>
             <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-elegant">
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199423.98264335608!2d-85.83031998916017!3d38.17753842511534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88690b1ab35bd511%3A0xd4d3b4282071fd32!2sLouisville%2C%20KY!5e0!3m2!1sen!2sus!4v1649126436889!5m2!1sen!2sus"
@@ -351,13 +396,16 @@ const ContactPage = () => {
                 allowFullScreen
                 loading="lazy"
                 referrerPolicy="no-referrer-when-downgrade"
+                title="Deco Moderna location in Louisville, Kentucky"
+                aria-label="Google Maps showing Deco Moderna's location in Louisville, Kentucky"
               ></iframe>
             </div>
           </div>
         </section>
       </main>
       <Footer />
-      <Script 
+      <Script
+        id="lead-connector-chat-widget"
         src="https://widgets.leadconnectorhq.com/loader.js"
         data-resources-url="https://widgets.leadconnectorhq.com/chat-widget/loader.js"
         data-widget-id="67e6db460d93973719f6b3dc"
