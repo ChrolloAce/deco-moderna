@@ -72,22 +72,22 @@ const ContactPage = () => {
     {
       icon: <FaPhone className="text-gold-500" />,
       title: 'Phone',
-      details: '(689) 229-0906',
-      action: 'tel:+16892290906',
+      details: '(909) 645-3373',
+      action: 'tel:+19096453373',
       actionText: 'Call Now',
     },
     {
       icon: <FaEnvelope className="text-gold-500" />,
       title: 'Email',
-      details: 'Luxuryhomeremodelingfl@gmail.com',
-      action: 'mailto:Luxuryhomeremodelingfl@gmail.com',
+      details: 'Savemoneyremodeling@gmail.com',
+      action: 'mailto:Savemoneyremodeling@gmail.com',
       actionText: 'Send Email',
     },
     {
       icon: <FaMapMarkerAlt className="text-gold-500" />,
       title: 'Address',
-      details: 'Orlando, FL 32801',
-      action: 'https://maps.google.com/?q=Orlando,FL',
+      details: 'Louisville, KY 40202',
+      action: 'https://maps.google.com/?q=Louisville,KY',
       actionText: 'Get Directions',
     },
     {
@@ -102,9 +102,9 @@ const ContactPage = () => {
   return (
     <>
       <Head>
-        <title>Contact Luxury Home Remodeling | Orlando's Premium Remodeling Services</title>
-        <meta name="description" content="Contact Luxury Home Remodeling for premium kitchen, bathroom, and home renovation services in Orlando, FL. Get a free consultation for your remodeling project today." />
-        <meta name="keywords" content="Orlando home remodeling, luxury remodeling Orlando, kitchen remodeling Orlando, bathroom renovation Orlando, custom cabinetry, premium flooring installation, Orlando contractor, home renovation Florida" />
+        <title>Contact Deco Moderna | Louisville's Premium Remodeling Services</title>
+        <meta name="description" content="Contact Deco Moderna for premium kitchen, bathroom, and home renovation services in Louisville, KY. Get a free consultation for your remodeling project today." />
+        <meta name="keywords" content="Louisville home remodeling, luxury remodeling Louisville, kitchen remodeling Louisville, bathroom renovation Kentucky, custom cabinetry, premium flooring installation, Kentucky contractor, home renovation Louisville" />
       </Head>
       <Navbar />
       <main>
@@ -176,8 +176,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="text-lg font-semibold text-black mb-1">Address</h3>
                       <p className="text-gray-600">
-                        505 North 38th Street<br />
-                        Orlando, FL 32801
+                        123 Bourbon Street<br />
+                        Louisville, KY 40202
                       </p>
                     </div>
                   </div>
@@ -191,8 +191,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="text-lg font-semibold text-black mb-1">Phone</h3>
                       <p className="text-gray-600">
-                        <a href="tel:+16892290906" className="hover:text-gold-500 transition-colors">
-                          (689) 229-0906
+                        <a href="tel:+19096453373" className="hover:text-gold-500 transition-colors">
+                          (909) 645-3373
                         </a>
                       </p>
                     </div>
@@ -207,8 +207,8 @@ const ContactPage = () => {
                     <div>
                       <h3 className="text-lg font-semibold text-black mb-1">Email</h3>
                       <p className="text-gray-600">
-                        <a href="mailto:Luxuryhomeremodelingfl@gmail.com" className="hover:text-gold-500 transition-colors">
-                          Luxuryhomeremodelingfl@gmail.com
+                        <a href="mailto:Savemoneyremodeling@gmail.com" className="hover:text-gold-500 transition-colors">
+                          Savemoneyremodeling@gmail.com
                         </a>
                       </p>
                     </div>
@@ -345,7 +345,7 @@ const ContactPage = () => {
           <div className="container-custom">
             <div className="aspect-w-16 aspect-h-9 rounded-2xl overflow-hidden shadow-elegant">
               <iframe
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d224437.36210385734!2d-81.49659811640625!3d28.481169599999997!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88e773d8fecdbc77%3A0xac3b2063ca5bf9e!2sOrlando%2C%20FL!5e0!3m2!1sen!2sus!4v1649126436889!5m2!1sen!2sus"
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d199423.98264335608!2d-85.83031998916017!3d38.17753842511534!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x88690b1ab35bd511%3A0xd4d3b4282071fd32!2sLouisville%2C%20KY!5e0!3m2!1sen!2sus!4v1649126436889!5m2!1sen!2sus"
                 width="100%"
                 height="450"
                 style={{ border: 0 }}

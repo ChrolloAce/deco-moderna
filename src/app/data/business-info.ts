@@ -18,10 +18,10 @@ export const BusinessInfo = {
   // Contact Information
   contact: {
     phone: {
-      display: "(502) 555-1234",
-      link: "5025551234",
+      display: "(909) 645-3373",
+      link: "9096453373",
     },
-    email: "hello@decomoderna.com",
+    email: "Savemoneyremodeling@gmail.com",
     address: {
       street: "123 Bourbon Street", 
       city: "Louisville",

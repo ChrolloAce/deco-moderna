@@ -17,7 +17,6 @@ interface Project {
 }
 
 const PortfolioPage = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
   const [selectedProject, setSelectedProject] = useState<Project | null>(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [activeCategory, setActiveCategory] = useState('all');
@@ -225,22 +224,6 @@ const PortfolioPage = () => {
     ? projects 
     : projects.filter(project => project.category === activeCategory);
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (filteredProjects.length > 3) {
-        setCurrentIndex((prevIndex) => 
-          prevIndex === filteredProjects.length - 3 ? 0 : prevIndex + 1
-        );
-      }
-    }, 8000);
-
-    return () => clearInterval(timer);
-  }, [filteredProjects]);
-
-  const visibleProjects = filteredProjects.length <= 3 
-    ? filteredProjects 
-    : filteredProjects.slice(currentIndex, currentIndex + 3);
-
   const openModal = (project: Project) => {
     setSelectedProject(project);
     setIsModalOpen(true);
@@ -306,7 +289,6 @@ const PortfolioPage = () => {
                   key={category.id}
                   onClick={() => {
                     setActiveCategory(category.id);
-                    setCurrentIndex(0);
                   }}
                   className={`px-6 py-3 rounded-full border transition-all duration-300 ${
                     activeCategory === category.id
@@ -321,116 +303,57 @@ const PortfolioPage = () => {
           </div>
         </section>
 
-        {/* Portfolio Slider */}
-        <section className="py-24 bg-gradient-to-b from-white to-gray-50 overflow-hidden">
+        {/* Portfolio Grid */}
+        <section className="py-24 bg-gradient-to-b from-white to-gray-50">
           <div className="container-custom">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              viewport={{ once: true }}
-              className="text-center mb-20"
-            >
-              <div className="h-1 w-24 bg-gold-gradient mx-auto mb-8 rounded-full"></div>
-              <h2 className="text-4xl md:text-5xl font-bold text-black mb-6 tracking-tight">
-                Our Portfolio
-              </h2>
-              <p className="text-xl text-gray-600 max-w-2xl mx-auto leading-relaxed">
-                Explore our recent remodeling projects
-              </p>
-            </motion.div>
-
             {filteredProjects.length > 0 ? (
-              <div className="relative max-w-7xl mx-auto">
-                <AnimatePresence mode="wait">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                {filteredProjects.map((project, index) => (
                   <motion.div
-                    key={currentIndex}
-                    initial={{ opacity: 0, x: 100 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -100 }}
-                    transition={{ duration: 0.6, ease: "easeInOut" }}
-                    className="grid grid-cols-1 md:grid-cols-3 gap-8"
+                    key={`${project.title}-${index}`}
+                    initial={{ opacity: 0, y: 20 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: Math.min(index * 0.05, 1.5) }}
+                    className="relative bg-white rounded-3xl shadow-xl overflow-hidden group cursor-pointer transform hover:-translate-y-1 transition-all duration-300"
+                    onClick={() => openModal(project)}
                   >
-                    {visibleProjects.map((project, index) => (
-                      <motion.div
-                        key={`${project.title}-${index}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        exit={{ opacity: 0, y: -20 }}
-                        transition={{ duration: 0.5, delay: index * 0.1 }}
-                        className="relative bg-white rounded-3xl shadow-xl overflow-hidden group cursor-pointer transform hover:-translate-y-1 transition-all duration-300"
-                        onClick={() => openModal(project)}
-                      >
-                        <div className="relative h-[400px] overflow-hidden">
-                          <Image
-                            src={project.image}
-                            alt={project.title}
-                            fill
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                            className="object-cover transition-transform duration-700 group-hover:scale-105"
-                            quality={90}
-                            unoptimized={true}
-                          />
-                          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                        </div>
-                        <div className="absolute bottom-0 left-0 right-0 p-8 text-white transform translate-y-full group-hover:translate-y-0 transition-transform duration-500">
-                          <div className="flex items-center space-x-4 mb-3">
-                            <span className="px-4 py-1.5 bg-gold-500 text-black rounded-full text-sm font-semibold tracking-wide">
-                              {project.category}
-                            </span>
-                            <span className="text-sm opacity-90">
-                              {project.location}
-                            </span>
-                          </div>
-                          <h3 className="text-2xl font-bold mb-3 tracking-tight">
-                            {project.title}
-                          </h3>
-                          <p className="text-base text-gray-200 leading-relaxed">
-                            {project.description}
-                          </p>
-                        </div>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                </AnimatePresence>
-
-                {filteredProjects.length > 3 && (
-                  <>
-                    {/* Navigation Arrows */}
-                    <button
-                      onClick={() => setCurrentIndex((prev) => (prev === 0 ? filteredProjects.length - 3 : prev - 1))}
-                      className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-16 w-14 h-14 bg-white rounded-full flex items-center justify-center text-black hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:-translate-x-20"
-                      aria-label="Previous projects"
-                    >
-                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-                      </svg>
-                    </button>
-                    <button
-                      onClick={() => setCurrentIndex((prev) => (prev === filteredProjects.length - 3 ? 0 : prev + 1))}
-                      className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-16 w-14 h-14 bg-white rounded-full flex items-center justify-center text-black hover:bg-gray-50 transition-all duration-300 shadow-xl hover:shadow-2xl hover:translate-x-20"
-                      aria-label="Next projects"
-                    >
-                      <svg className="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-                      </svg>
-                    </button>
-
-                    {/* Navigation Dots */}
-                    <div className="flex justify-center space-x-3 mt-12">
-                      {Array.from({ length: Math.max(1, filteredProjects.length - 2) }).map((_, index) => (
-                        <button
-                          key={index}
-                          onClick={() => setCurrentIndex(index)}
-                          className={`h-3 rounded-full transition-all duration-500 ${
-                            index === currentIndex ? 'bg-gold-500 w-8' : 'bg-gray-300 w-3 hover:bg-gray-400'
-                          }`}
-                          aria-label={`Go to projects ${index + 1}-${index + 3}`}
-                        />
-                      ))}
+                    <div className="relative h-[400px] overflow-hidden">
+                      <Image
+                        src={project.image}
+                        alt={project.title}
+                        fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                        className="object-cover transition-transform duration-700 group-hover:scale-105"
+                        quality={85}
+                        priority={index < 9}
+                        unoptimized={true}
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                     </div>
-                  </>
-                )}
+                    <div className="p-6">
+                      <div className="flex items-center space-x-4 mb-2">
+                        <span className="px-3 py-1 bg-gold-500 text-black rounded-full text-xs font-semibold tracking-wide">
+                          {project.category}
+                        </span>
+                        <span className="text-sm text-gray-600">
+                          {project.location}
+                        </span>
+                      </div>
+                      <h3 className="text-xl font-bold mb-2 tracking-tight text-gray-900">
+                        {project.title}
+                      </h3>
+                      <p className="text-sm text-gray-600 line-clamp-2">
+                        {project.description}
+                      </p>
+                      <button className="mt-4 text-gold-500 font-medium flex items-center text-sm">
+                        View Project
+                        <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                        </svg>
+                      </button>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
             ) : (
               <div className="text-center py-12">
@@ -481,6 +404,7 @@ const PortfolioPage = () => {
                     sizes="(max-width: 768px) 100vw, (max-width: 1200px) 80vw, 60vw"
                     className="object-cover"
                     quality={95}
+                    priority={true}
                     unoptimized={true}
                   />
                 </div>
