@@ -86,7 +86,7 @@ const ContactPage = () => {
     {
       icon: <FaMapMarkerAlt className="text-gold-500" />,
       title: 'Address',
-      details: 'Louisville, KY 40202',
+      details: 'Louisville, KY',
       action: 'https://maps.google.com/?q=Louisville,KY',
       actionText: 'Get Directions',
     },
@@ -176,8 +176,7 @@ const ContactPage = () => {
                     <div>
                       <h3 className="text-lg font-semibold text-black mb-1">Address</h3>
                       <p className="text-gray-600">
-                        123 Bourbon Street<br />
-                        Louisville, KY 40202
+                        Louisville, KY
                       </p>
                     </div>
                   </div>

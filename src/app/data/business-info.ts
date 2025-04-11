@@ -23,10 +23,10 @@ export const BusinessInfo = {
     },
     email: "Savemoneyremodeling@gmail.com",
     address: {
-      street: "123 Bourbon Street", 
+      street: "", 
       city: "Louisville",
       state: "Kentucky",
-      zip: "40202", 
+      zip: "", 
       country: "USA",
       coordinates: {
         lat: 38.2527,
