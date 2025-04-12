@@ -11,9 +11,9 @@ import Footer from './components/Footer';
 import React from 'react';
 
 export const metadata = {
-  title: 'Deco Moderna | Premium Renovation Services in Orlando, FL',
-  description: 'Transform your home with Orlando\'s leading luxury remodeling company. Specializing in premium kitchen and bathroom renovations, custom cabinetry, and high-end flooring installation.',
-  keywords: 'Deco Moderna Orlando, kitchen renovation Orlando FL, bathroom remodeling Orlando, custom cabinetry Orlando, premium renovation services, home improvement Orlando, Orlando contractors, high-end home renovation'
+  title: 'Deco Moderna | Premium Renovation Services in Louisville, KY',
+  description: 'Transform your home with Louisville\'s leading luxury remodeling company. Specializing in premium kitchen and bathroom renovations, custom cabinetry, and high-end flooring installation in Kentucky.',
+  keywords: 'Deco Moderna Louisville, kitchen renovation Louisville KY, bathroom remodeling Kentucky, custom cabinetry Louisville, premium renovation services, home improvement Kentucky, Louisville contractors, high-end home renovation'
 };
 
 export default function Home() {
