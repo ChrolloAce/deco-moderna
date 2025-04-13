@@ -1,14 +1,25 @@
-import { Resend } from 'resend';
+import nodemailer from 'nodemailer';
 import { NextRequest, NextResponse } from 'next/server';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-const fromEmail = process.env.FROM_EMAIL;
+// Ensure these are set in your .env.local file
+const gmailEmail = process.env.GMAIL_EMAIL;
+const gmailAppPassword = process.env.GMAIL_APP_PASSWORD;
 const toEmail = process.env.TO_EMAIL;
 
 export async function POST(req: NextRequest) {
-  if (!fromEmail || !toEmail) {
-    return NextResponse.json({ error: 'Sender or receiver email not configured.' }, { status: 500 });
+  if (!gmailEmail || !gmailAppPassword || !toEmail) {
+    console.error('Missing Gmail credentials or recipient email in environment variables.');
+    return NextResponse.json({ error: 'Email configuration missing.' }, { status: 500 });
   }
+
+  // Create a transporter object using the default SMTP transport
+  const transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: gmailEmail,
+      pass: gmailAppPassword,
+    },
+  });
 
   try {
     const body = await req.json();
@@ -17,14 +28,24 @@ export async function POST(req: NextRequest) {
     // Construct email subject
     const subject = `New Lead from ${formLocation || 'Website Form'}: ${name}`;
 
-    // Construct email body
+    // Construct email body (HTML for better formatting)
     let emailBody = `
-      <h1>New Lead Submission</h1>
-      <p><strong>Source:</strong> ${source || 'N/A'}</p>
-      <p><strong>Form Location:</strong> ${formLocation || 'N/A'}</p>
-      <p><strong>Name:</strong> ${name}</p>
-      <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
-      <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
+      <html>
+        <head>
+          <style>
+            body { font-family: sans-serif; line-height: 1.6; }
+            p { margin-bottom: 10px; }
+            strong { font-weight: bold; }
+          </style>
+        </head>
+        <body>
+          <h2>New Lead Submission</h2>
+          <p><strong>Source:</strong> ${source || 'N/A'}</p>
+          <p><strong>Form Location:</strong> ${formLocation || 'N/A'}</p>
+          <hr>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> <a href="mailto:${email}">${email}</a></p>
+          <p><strong>Phone:</strong> <a href="tel:${phone}">${phone}</a></p>
     `;
 
     if (service) {
@@ -34,25 +55,37 @@ export async function POST(req: NextRequest) {
       emailBody += `<p><strong>Zip Code:</strong> ${zipcode}</p>`;
     }
     if (message) {
-      emailBody += `<p><strong>Message:</strong></p><p>${message.replace(/\n/g, '<br>')}</p>`;
+      emailBody += `<hr><p><strong>Message:</strong></p><p>${message.replace(/\n/g, '<br>')}</p>`;
     }
+    
+    emailBody += `
+        </body>
+      </html>
+    `;
 
-    const { data, error } = await resend.emails.send({
-      from: fromEmail,
-      to: [toEmail],
-      subject: subject,
-      html: emailBody,
-    });
+    // Setup email data
+    const mailOptions = {
+      from: `"${formLocation || 'Deco Moderna Website'}" <${gmailEmail}>`, // Sender address (shows website name)
+      to: toEmail, // List of receivers
+      subject: subject, // Subject line
+      html: emailBody, // HTML body content
+    };
 
-    if (error) {
-      console.error('Resend API Error:', error);
-      return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 });
-    }
-
-    console.log('Email sent successfully:', data);
+    // Send mail with defined transport object
+    await transporter.sendMail(mailOptions);
+    
+    console.log('Email sent successfully using Nodemailer.');
     return NextResponse.json({ message: 'Email sent successfully!' });
+
   } catch (error) {
-    console.error('API Route Error:', error);
-    return NextResponse.json({ error: 'An unexpected error occurred.' }, { status: 500 });
+    console.error('Nodemailer API Route Error:', error);
+    // Check for specific Nodemailer errors if needed
+    if (error instanceof Error && 'code' in error) {
+        const nodemailerError = error as any; // Type assertion to access code
+        if (nodemailerError.code === 'EAUTH') {
+             return NextResponse.json({ error: 'Authentication failed. Check Gmail credentials and App Password.' }, { status: 401 });
+        }
+    }
+    return NextResponse.json({ error: 'Failed to send email.' }, { status: 500 });
   }
 } 
