@@ -15,19 +15,59 @@ const Hero = () => {
     zipcode: '',
     service: 'Kitchen Remodeling',
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [submitError, setSubmitError] = useState('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // In a real app, you would send this data to your backend
-    console.log('Form submitted:', formData);
-    
-    // Navigate to thank you page instead of showing alert
-    router.push('/thank-you');
+    setIsSubmitting(true);
+    setSubmitError('');
+
+    try {
+      // Send data to webhook
+      const response = await fetch('https://hook.us2.make.com/neln229u0by16e8y53nprbdbacgeabol', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          ...formData,
+          source: 'website-hero-form',
+          timestamp: new Date().toISOString(),
+          formLocation: 'hero-quote-form'
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to submit quote request');
+      }
+
+      // Also store in localStorage for backup
+      if (typeof window !== 'undefined') {
+        const previousSubmissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+        localStorage.setItem('formSubmissions', JSON.stringify([
+          ...previousSubmissions,
+          {
+            ...formData,
+            timestamp: new Date().toISOString(),
+            formLocation: 'hero-quote-form'
+          }
+        ]));
+      }
+
+      // Navigate to thank you page
+      router.push('/thank-you');
+    } catch (error) {
+      console.error('Error submitting hero form:', error);
+      setSubmitError('There was an error submitting your request. Please try again or use the main contact form.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -110,6 +150,7 @@ const Hero = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-gold-400 text-base"
                   required
+                  aria-required="true"
                 />
               </div>
               <div>
@@ -121,6 +162,7 @@ const Hero = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-gold-400 text-base"
                   required
+                  aria-required="true"
                 />
               </div>
               <div>
@@ -132,6 +174,7 @@ const Hero = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-gold-400 text-base"
                   required
+                  aria-required="true"
                 />
               </div>
               <div>
@@ -143,6 +186,7 @@ const Hero = () => {
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white placeholder-gray-400 focus:outline-none focus:border-gold-400 text-base"
                   required
+                  aria-required="true"
                 />
               </div>
               <div>
@@ -151,6 +195,8 @@ const Hero = () => {
                   value={formData.service}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-gold-400 text-base"
+                  required
+                  aria-required="true"
                 >
                   {BusinessInfo.services.primary.map((service) => (
                     <option key={service} value={service} className="bg-gray-800 text-white">
@@ -159,11 +205,19 @@ const Hero = () => {
                   ))}
                 </select>
               </div>
+
+              {submitError && (
+                <div className="p-3 bg-red-100 text-red-700 rounded-lg text-sm">
+                  {submitError}
+                </div>
+              )}
+
               <button
                 type="submit"
-                className="w-full bg-gold-400 text-black py-3 rounded-lg font-semibold hover:bg-gold-500 transition-colors text-base"
+                className="w-full bg-gold-400 text-black py-3 rounded-lg font-semibold hover:bg-gold-500 transition-colors text-base disabled:opacity-50"
+                disabled={isSubmitting}
               >
-                Get Free Quote
+                {isSubmitting ? 'Sending...' : 'Get Free Quote'}
               </button>
             </form>
           </motion.div>
