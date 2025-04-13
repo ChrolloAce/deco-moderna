@@ -107,8 +107,8 @@ const ContactPage = () => {
     {
       icon: <FaPhone className="text-gold-500" />,
       title: 'Phone',
-      details: '(909) 645-3373',
-      action: 'tel:+19096453373',
+      details: '(502) 249-5729',
+      action: 'tel:+15022495729',
       actionText: 'Call Now',
     },
     {

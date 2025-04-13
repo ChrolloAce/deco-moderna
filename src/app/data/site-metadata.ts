@@ -138,7 +138,7 @@ export const SiteMetadata = {
       "name": COMPANY_NAME,
       "image": "https://www.decomodernaremodeling.com/logo.png",
       "url": "https://www.decomodernaremodeling.com",
-      "telephone": "(909) 645-3373",
+      "telephone": "(502) 249-5729",
       "email": "Savemoneyremodeling@gmail.com",
       "address": {
         "@type": "PostalAddress",
