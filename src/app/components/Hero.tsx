@@ -27,44 +27,51 @@ const Hero = () => {
     e.preventDefault();
     setIsSubmitting(true);
     setSubmitError('');
+    
+    const submissionData = {
+      ...formData,
+      source: 'website-hero-form',
+      timestamp: new Date().toISOString(),
+      formLocation: 'Hero Section'
+    };
 
     try {
-      // Send data to webhook
-      const response = await fetch('https://hook.us2.make.com/neln229u0by16e8y53nprbdbacgeabol', {
+      // Attempt to send email via API route
+      const emailResponse = await fetch('/api/send-email', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          ...formData,
-          source: 'website-hero-form',
-          timestamp: new Date().toISOString(),
-          formLocation: 'hero-quote-form'
-        }),
+        body: JSON.stringify(submissionData),
       });
 
-      if (!response.ok) {
-        throw new Error('Failed to submit quote request');
+      if (!emailResponse.ok) {
+        console.warn('Failed to send email, proceeding with form submission.');
+        // Optionally: Log this error to your monitoring service
       }
 
-      // Also store in localStorage for backup
+      // Store in localStorage as backup regardless of email success
       if (typeof window !== 'undefined') {
         const previousSubmissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
         localStorage.setItem('formSubmissions', JSON.stringify([
           ...previousSubmissions,
-          {
-            ...formData,
-            timestamp: new Date().toISOString(),
-            formLocation: 'hero-quote-form'
-          }
+          submissionData
         ]));
       }
-
-      // Navigate to thank you page
+      
+      // Redirect to thank you page
       router.push('/thank-you');
     } catch (error) {
       console.error('Error submitting hero form:', error);
-      setSubmitError('There was an error submitting your request. Please try again or use the main contact form.');
+      setSubmitError('There was an error submitting your quote request. Please try again.');
+      // Even if API call fails, try to save to localStorage
+       if (typeof window !== 'undefined') {
+        const previousSubmissions = JSON.parse(localStorage.getItem('formSubmissions') || '[]');
+        localStorage.setItem('formSubmissions', JSON.stringify([
+          ...previousSubmissions,
+          submissionData
+        ]));
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -118,7 +125,7 @@ const Hero = () => {
             </div>
             <div className="flex flex-col sm:flex-row gap-4 w-full">
               <Link 
-                href="/contact" 
+                href="/contact?service=Free%20Consultation" 
                 className="bg-gold-400 text-black px-6 md:px-8 py-3 rounded-full font-semibold hover:bg-gold-500 transition-colors text-center"
               >
                 Get Free Quote
@@ -195,8 +202,7 @@ const Hero = () => {
                   value={formData.service}
                   onChange={handleChange}
                   className="w-full px-4 py-3 rounded-lg bg-white/5 border border-white/10 text-white focus:outline-none focus:border-gold-400 text-base"
-                  required
-                  aria-required="true"
+                  aria-label="Select a service"
                 >
                   {BusinessInfo.services.primary.map((service) => (
                     <option key={service} value={service} className="bg-gray-800 text-white">
@@ -205,16 +211,14 @@ const Hero = () => {
                   ))}
                 </select>
               </div>
-
               {submitError && (
-                <div className="p-3 bg-red-100 text-red-700 rounded-lg text-sm">
+                <div className="p-2 bg-red-50 text-red-700 rounded-lg text-sm">
                   {submitError}
                 </div>
               )}
-
               <button
                 type="submit"
-                className="w-full bg-gold-400 text-black py-3 rounded-lg font-semibold hover:bg-gold-500 transition-colors text-base disabled:opacity-50"
+                className="w-full bg-gold-400 text-black py-3 rounded-lg font-semibold hover:bg-gold-500 transition-colors text-base disabled:opacity-50 disabled:cursor-not-allowed"
                 disabled={isSubmitting}
               >
                 {isSubmitting ? 'Sending...' : 'Get Free Quote'}
